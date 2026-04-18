@@ -1,4 +1,35 @@
-<!DOCTYPE html>
+local keyCorreta = "20+20+20+7=67"
+
+local player = game.Players.LocalPlayer
+
+local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0,300,0,150)
+Frame.Position = UDim2.new(0.5,-150,0.5,-75)
+Frame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+
+local TextBox = Instance.new("TextBox", Frame)
+TextBox.Size = UDim2.new(0.8,0,0.3,0)
+TextBox.Position = UDim2.new(0.1,0,0.2,0)
+TextBox.PlaceholderText = "Digite a key"
+
+local Button = Instance.new("TextButton", Frame)
+Button.Size = UDim2.new(0.8,0,0.3,0)
+Button.Position = UDim2.new(0.1,0,0.6,0)
+Button.Text = "Verificar"
+
+local liberado = false
+
+Button.MouseButton1Click:Connect(function()
+	if TextBox.Text == keyCorreta then
+		liberado = true
+		ScreenGui:Destroy()
+	else
+		Button.Text = "Key inválida"
+	end
+end)
+
+repeat task.wait() until liberado
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
